@@ -16,4 +16,4 @@ Documentation
 
 License Information
 -------------------
-Released under the GPL 3.0 license (see license.txt)
+Released under the GPL 3.0 license (see LICENSE file)
