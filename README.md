@@ -9,11 +9,6 @@ Installation
 * Create the libraries folder if it does not exist
 * Directory structure should look like: .../MyDocuments/Arduino/libraries/AST_RS485
 
-Documentation
---------------
-
-* **[Installing an Arduino Library Guide](https://learn.sparkfun.com/tutorials/installing-an-arduino-library)** - Basic information on how to install an Arduino library.
-
 License Information
 -------------------
 Released under the GPL 3.0 license (see LICENSE file)
