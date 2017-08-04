@@ -10,7 +10,13 @@
 #ifndef _CAN_LIBRARY_H_
 #define _CAN_LIBRARY_H_
 
+#include <Arduino.h>
+
 extern "C"{
 	#include <can_lib.h>
 }
+
+void canInit(void);
+void clearBuffer(uint8_t *Buffer);
+
 #endif
