@@ -8,7 +8,6 @@
 #include <AST_RS485.h>
 
 // define constants
-#define RX_BUFFER_LEN 32
 #define SERIAL_BAUDRATE 115200
 #define RS485_BAUDRATE 115200
 
