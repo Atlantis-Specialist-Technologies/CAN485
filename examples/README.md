@@ -1,4 +1,4 @@
-# RS485 Example
+# CAN Example
 This example shows how to use the CAN port on the CAN485 board.
 
 ## Description
