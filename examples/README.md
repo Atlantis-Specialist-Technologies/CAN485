@@ -8,6 +8,7 @@ Serial data is input to a node, it is then passed to the other node over the RS4
 - Setup as shown:
 ![RS485 Example Setup](https://raw.githubusercontent.com/Atlantis-Specialist-Technologies/ast-arduino-boards/master/docs/_images/RS485-annotated.png)
 - Flash both nodes with the example sketch: [Serial Passthrough](https://github.com/Atlantis-Specialist-Technologies/AST_RS485/blob/master/examples/RS485toSerialPassthrough/RS485toSerialPassthrough.ino "Example Sketch")
+- Connect the FTDI port of each node to a PC
 
 ## Use
 - Open a serial monitor for each CAN485 node.
