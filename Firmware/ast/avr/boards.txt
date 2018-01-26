@@ -1,0 +1,33 @@
+# Created by Atlantis Specialist Technologies
+# by James Blakey-Milner, 1 Aug 2017.
+# Note! this file is in early development
+# (alpha) and is likely to change without notice.
+
+menu.cpu=Processor
+
+##############################################################
+
+Can485.name=Can485
+
+Can485.vid=0x0403
+Can485.pid=0x6001
+
+Can485.upload.tool=avrdude
+Can485.upload.protocol=arduino
+Can485.upload.maximum_size=130048
+Can485.upload.maximum_data_size=4096
+Can485.upload.speed=115200
+
+Can485.bootloader.tool=avrdude
+Can485.bootloader.low_fuses=0xCF
+Can485.bootloader.high_fuses=0x96
+Can485.bootloader.extended_fuses=0xFF
+Can485.bootloader.unlock_bits=0xFF
+Can485.bootloader.lock_bits=0xCF
+Can485.bootloader.file=can485-boot/optiboot_Can485.hex
+
+Can485.build.mcu=at90can128
+Can485.build.f_cpu=16000000UL
+Can485.build.board=AVR_Can485
+Can485.build.core=arduino:arduino
+Can485.build.variant=Can485

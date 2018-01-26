@@ -1,0 +1,32 @@
+#
+# Makefile for "custom" platforms.   Add your board here.
+#
+# * Copyright 2013-2015 by Bill Westfield.  Part of Optiboot.
+# * This software is licensed under version 2 of the Gnu Public Licence.
+# * See optiboot.c for details.
+
+# * Modified by Atlantis Specialist Technologies by James Blakey-Milner, 1 Aug 2017.
+# * Added support for the AST CAN485 board
+# * Note! AST modifications are in early development (alpha) and are likely to change without notice.
+
+can485: OPTIBOOT_CUSTOMVER = 01
+
+can485: TARGET = can485
+can485: MCU_TARGET = at90can128
+can485: CFLAGS += $(COMMON_OPTIONS) '-DLED_START_FLASHES=3' '-DBAUD_RATE=115200'
+can485: AVR_FREQ ?= 16000000L
+can485: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.version=0x1fffe
+
+can485: $(PROGRAM)_can485.hex
+can485: $(PROGRAM)_can485.lst
+
+can485_isp: can485
+can485_isp: TARGET = can485
+can485_isp: MCU_TARGET = at90can128
+# 512 word boot, SPIEN, JTAGEN, BOOTRST, EESAVE
+can485_isp: HFUSE = 96
+# External Xtal (16MHz) 1KCK/+65ms
+can485_isp: LFUSE = CF
+# no brownout
+can485_isp: EFUSE = FF
+can485_isp: isp
