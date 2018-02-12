@@ -16,7 +16,7 @@ extern "C"{
 	#include <can_lib.h>
 }
 
-void canInit(void);
+void canInit(long baud);
 void clearBuffer(uint8_t *Buffer);
 
 #endif

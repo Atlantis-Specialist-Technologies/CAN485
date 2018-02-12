@@ -38,128 +38,128 @@
 
 //_____ D E F I N I T I O N S __________________________________________________
 
-    // ----------
-#ifndef FOSC
-#  error  You must define FOSC in "config.h" file
-#endif
-    // ----------
-#ifndef CAN_BAUDRATE
-#  error  You must define CAN_BAUDRATE in "config.h" file
-#endif
-#define CAN_AUTOBAUD    0
-    // ----------
-#if FOSC == 16000             //!< Fclkio = 16 MHz, Tclkio = 62.5 ns
-#   if   CAN_BAUDRATE == 100       //!< -- 100Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x12       // Tscl  = 10x Tclkio = 625 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 125       //!< -- 125Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x0E       // Tscl  = 8x Tclkio = 500 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 200       //!< -- 200Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x08       // Tscl  = 5x Tclkio = 312.5 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 250       //!< -- 250Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x06       // Tscl  = 4x Tclkio = 250 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 500       //!< -- 500Kb/s, 8x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x06       // Tscl = 4x Tclkio = 250 ns
-#       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 1000      //!< -- 1 Mb/s, 8x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 125 ns
-#       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == CAN_AUTOBAUD  // Treated later in the file
-#       define CONF_CANBT1  0x00       // Unused
-#       define CONF_CANBT2  0x00       // Unused
-#       define CONF_CANBT3  0x00       // Unused
-#   else
-#       error This CAN_BAUDRATE value is not in "can_drv.h" file
-#   endif
+//     // ----------
+// #ifndef FOSC
+// #  error  You must define FOSC in "config.h" file
+// #endif
+//     // ----------
+// #ifndef CAN_BAUDRATE
+// #  error  You must define CAN_BAUDRATE in "config.h" file
+// #endif
+// #define CAN_AUTOBAUD    0
+//     // ----------
+// #if FOSC == 16000             //!< Fclkio = 16 MHz, Tclkio = 62.5 ns
+// #   if   CAN_BAUDRATE == 100       //!< -- 100Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x12       // Tscl  = 10x Tclkio = 625 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 125       //!< -- 125Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x0E       // Tscl  = 8x Tclkio = 500 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 200       //!< -- 200Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x08       // Tscl  = 5x Tclkio = 312.5 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 250       //!< -- 250Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x06       // Tscl  = 4x Tclkio = 250 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 500       //!< -- 500Kb/s, 8x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x06       // Tscl = 4x Tclkio = 250 ns
+// #       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 1000      //!< -- 1 Mb/s, 8x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 125 ns
+// #       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == CAN_AUTOBAUD  // Treated later in the file
+// #       define CONF_CANBT1  0x00       // Unused
+// #       define CONF_CANBT2  0x00       // Unused
+// #       define CONF_CANBT3  0x00       // Unused
+// #   else
+// #       error This CAN_BAUDRATE value is not in "can_drv.h" file
+// #   endif
 
-#elif FOSC == 12000           //!< Fclkio = 12 MHz, Tclkio = 83.333 ns
-#   if   CAN_BAUDRATE == 100       //!< -- 100Kb/s, 20x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x0A       // Tscl  = 6x Tclkio = 500 ns
-#       define CONF_CANBT2  0x0E       // Tsync = 1x Tscl, Tprs = 8x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x4B       // Tpsh1 = 6x Tscl, Tpsh2 = 5x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 125       //!< -- 125Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x0A       // Tscl  = 6x Tclkio = 500 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 200       //!< -- 200Kb/s, 20x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x04       // Tscl  = 3x Tclkio = 250 ns
-#       define CONF_CANBT2  0x0E       // Tsync = 1x Tscl, Tprs = 8x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x4B       // Tpsh1 = 6x Tscl, Tpsh2 = 5x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 250       //!< -- 250Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x04       // Tscl  = 3x Tclkio = 250 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 500       //!< -- 500Kb/s, 12x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 166.666 ns
-#       define CONF_CANBT2  0x08       // Tsync = 1x Tscl, Tprs = 5x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x25       // Tpsh1 = 3x Tscl, Tpsh2 = 3x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 1000      //!< -- 1 Mb/s, 12x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x00       // Tscl  = 1x Tclkio = 83.333 ns
-#       define CONF_CANBT2  0x08       // Tsync = 1x Tscl, Tprs = 5x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x25       // Tpsh1 = 3x Tscl, Tpsh2 = 3x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == CAN_AUTOBAUD  // Treated later in the file
-#       define CONF_CANBT1  0x00       // Unused
-#       define CONF_CANBT2  0x00       // Unused
-#       define CONF_CANBT3  0x00       // Unused
-#   else
-#       error This CAN_BAUDRATE value is not in "can_drv.h" file
-#   endif
+// #elif FOSC == 12000           //!< Fclkio = 12 MHz, Tclkio = 83.333 ns
+// #   if   CAN_BAUDRATE == 100       //!< -- 100Kb/s, 20x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x0A       // Tscl  = 6x Tclkio = 500 ns
+// #       define CONF_CANBT2  0x0E       // Tsync = 1x Tscl, Tprs = 8x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x4B       // Tpsh1 = 6x Tscl, Tpsh2 = 5x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 125       //!< -- 125Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x0A       // Tscl  = 6x Tclkio = 500 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 200       //!< -- 200Kb/s, 20x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x04       // Tscl  = 3x Tclkio = 250 ns
+// #       define CONF_CANBT2  0x0E       // Tsync = 1x Tscl, Tprs = 8x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x4B       // Tpsh1 = 6x Tscl, Tpsh2 = 5x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 250       //!< -- 250Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x04       // Tscl  = 3x Tclkio = 250 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 500       //!< -- 500Kb/s, 12x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 166.666 ns
+// #       define CONF_CANBT2  0x08       // Tsync = 1x Tscl, Tprs = 5x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x25       // Tpsh1 = 3x Tscl, Tpsh2 = 3x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 1000      //!< -- 1 Mb/s, 12x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x00       // Tscl  = 1x Tclkio = 83.333 ns
+// #       define CONF_CANBT2  0x08       // Tsync = 1x Tscl, Tprs = 5x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x25       // Tpsh1 = 3x Tscl, Tpsh2 = 3x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == CAN_AUTOBAUD  // Treated later in the file
+// #       define CONF_CANBT1  0x00       // Unused
+// #       define CONF_CANBT2  0x00       // Unused
+// #       define CONF_CANBT3  0x00       // Unused
+// #   else
+// #       error This CAN_BAUDRATE value is not in "can_drv.h" file
+// #   endif
 
-#elif FOSC == 8000              //!< Fclkio = 8 MHz, Tclkio = 125 ns
-#   if   CAN_BAUDRATE == 100       //!< -- 100Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x08       // Tscl  = 5x Tclkio = 625 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 125       //!< -- 125Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x06       // Tscl  = 4x Tclkio = 500 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 200       //!< -- 200Kb/s, 20x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 250 ns
-#       define CONF_CANBT2  0x0E       // Tsync = 1x Tscl, Tprs = 8x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x4B       // Tpsh1 = 6x Tscl, Tpsh2 = 5x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 250       //!< -- 250Kb/s, 16x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 250 ns
-#       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 500       //!< -- 500Kb/s, 8x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 250 ns
-#       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == 1000      //!< -- 1 Mb/s, 8x Tscl, sampling at 75%
-#       define CONF_CANBT1  0x00       // Tscl  = 1x Tclkio = 125 ns
-#       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
-#       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
-#   elif CAN_BAUDRATE == CAN_AUTOBAUD  // Treated later in the file
-#       define CONF_CANBT1  0x00       // Unused
-#       define CONF_CANBT2  0x00       // Unused
-#       define CONF_CANBT3  0x00       // Unused
-#   else
-#       error This CAN_BAUDRATE value is not in "can_drv.h" file
-#   endif
+// #elif FOSC == 8000              //!< Fclkio = 8 MHz, Tclkio = 125 ns
+// #   if   CAN_BAUDRATE == 100       //!< -- 100Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x08       // Tscl  = 5x Tclkio = 625 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 125       //!< -- 125Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x06       // Tscl  = 4x Tclkio = 500 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 200       //!< -- 200Kb/s, 20x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 250 ns
+// #       define CONF_CANBT2  0x0E       // Tsync = 1x Tscl, Tprs = 8x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x4B       // Tpsh1 = 6x Tscl, Tpsh2 = 5x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 250       //!< -- 250Kb/s, 16x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 250 ns
+// #       define CONF_CANBT2  0x0C       // Tsync = 1x Tscl, Tprs = 7x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x37       // Tpsh1 = 4x Tscl, Tpsh2 = 4x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 500       //!< -- 500Kb/s, 8x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x02       // Tscl  = 2x Tclkio = 250 ns
+// #       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == 1000      //!< -- 1 Mb/s, 8x Tscl, sampling at 75%
+// #       define CONF_CANBT1  0x00       // Tscl  = 1x Tclkio = 125 ns
+// #       define CONF_CANBT2  0x04       // Tsync = 1x Tscl, Tprs = 3x Tscl, Tsjw = 1x Tscl
+// #       define CONF_CANBT3  0x13       // Tpsh1 = 2x Tscl, Tpsh2 = 2x Tscl, 3 sample points
+// #   elif CAN_BAUDRATE == CAN_AUTOBAUD  // Treated later in the file
+// #       define CONF_CANBT1  0x00       // Unused
+// #       define CONF_CANBT2  0x00       // Unused
+// #       define CONF_CANBT3  0x00       // Unused
+// #   else
+// #       error This CAN_BAUDRATE value is not in "can_drv.h" file
+// #   endif
 
-#else
-#   error This FOSC value is not in "can_drv.h" file
-#endif
+// #else
+// #   error This FOSC value is not in "can_drv.h" file
+// #endif
     // ----------
     //! The first action of "can_bit_timing()" is to reset the CAN controller
     //! "can_bit_timing()" lets the CAN controller disable
     //! "can_bit_timing()" returns 1 if the setting of CANBTx registers is available
     //!                and returns 0 if the setting of CANBTx registers is wrong
-#if     CAN_BAUDRATE == CAN_AUTOBAUD
-#   define Can_bit_timing(mode)  (can_auto_baudrate(mode) )
-#else
-#   define Can_bit_timing(mode)  (can_fixed_baudrate(mode))
-#endif
+// #if     CAN_BAUDRATE == CAN_AUTOBAUD
+// #   define Can_bit_timing(mode)  (can_auto_baudrate(mode) )
+// #else
+// #   define Can_bit_timing(mode)  (can_fixed_baudrate(mode))
+// #endif
     // ----------
 #define CAN_PORT_IN     PIND
 #define CAN_PORT_DIR    DDRD
@@ -244,7 +244,7 @@ typedef enum {
     // ----------
 #define Can_full_abort()  { CANGCON |=  (1<<ABRQ); CANGCON &= ~(1<<ABRQ); }
     // ----------
-#define Can_conf_bt()     { CANBT1=CONF_CANBT1; CANBT2=CONF_CANBT2; CANBT3=CONF_CANBT3; }
+// #define Can_conf_bt()     { CANBT1=CONF_CANBT1; CANBT2=CONF_CANBT2; CANBT3=CONF_CANBT3; }
     // ----------
 #define Can_set_mob(mob)       { CANPAGE = ((mob) << 4);}
 #define Can_set_mask_mob()     {  CANIDM4=0xFF; CANIDM3=0xFF; CANIDM2=0xFF; CANIDM1=0xFF; }
@@ -413,7 +413,7 @@ extern  void can_get_data(U8* p_can_message_data);
 //!         ==0: research of bit timing configuration failed
 //!         ==1: baudrate performed
 //!
-extern  U8 can_auto_baudrate(U8 eval);
+// extern  U8 can_auto_baudrate(U8 eval);
 
 
 //------------------------------------------------------------------------------
@@ -429,7 +429,7 @@ extern  U8 can_auto_baudrate(U8 eval);
 //! @return Baudrate Status
 //!         fixed = 1: baudrate performed
 //!
-extern U8 can_fixed_baudrate(U8 eval);
+// extern U8 can_fixed_baudrate(U8 eval);
 
 //______________________________________________________________________________
 

@@ -53,12 +53,52 @@
 //!         ==1: baudrate performed 
 //!
 //------------------------------------------------------------------------------
-U8 can_init(U8 mode)
+// U8 can_init(U8 mode)
+// {
+//     if ((Can_bit_timing(mode))==0) return (0);  // c.f. macro in "can_drv.h"
+//     can_clear_all_mob();                        // c.f. function in "can_drv.c"
+//     Can_enable();                               // c.f. macro in "can_drv.h" 
+//     return (1);
+// }
+U8 can_init(U8 mode,long baud)
 {
-    if ((Can_bit_timing(mode))==0) return (0);  // c.f. macro in "can_drv.h"
-    can_clear_all_mob();                        // c.f. function in "can_drv.c"
-    Can_enable();                               // c.f. macro in "can_drv.h" 
-    return (1);
+  switch(baud){
+    case 100000:
+      CANBT1 = 0x12;
+      CANBT2 = 0x0C;
+      CANBT3 = 0x37;
+      break;
+    case 125000:
+      CANBT1 = 0x0E;
+      CANBT2 = 0x0C;
+      CANBT3 = 0x37;
+      break;
+    case 200000:
+      CANBT1 = 0x08;
+      CANBT2 = 0x0C;
+      CANBT3 = 0x37;
+      break;
+    case 250000:
+      CANBT1 = 0x06;
+      CANBT2 = 0x0C;
+      CANBT3 = 0x37;
+      break;
+    case 500000:
+      CANBT1 = 0x06;
+      CANBT2 = 0x04;
+      CANBT3 = 0x13;
+      break;
+    case 1000000:
+      CANBT1 = 0x02;
+      CANBT2 = 0x04;
+      CANBT3 = 0x13;
+      break;
+    default:
+      return(0);
+  }
+  can_clear_all_mob();                        // c.f. function in "can_drv.c"
+  Can_enable();                               // c.f. macro in "can_drv.h" 
+  return (1);
 }
 
 //------------------------------------------------------------------------------
