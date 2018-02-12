@@ -3,8 +3,6 @@
  * Repeatedly transmits an array of test data to the CAN port
  */
 
-//#define CAN_BAUDRATE 500
-
 #include <ASTCanLib.h>  
 
 #define MESSAGE_ID        256       // Message ID
