@@ -20,7 +20,7 @@ st_cmd_t Msg;
 uint8_t Buffer[8] = {};
 
 void setup() {
-  canInit();                   // Initialise CAN port. must be before Serial.begin
+  canInit(500000);            // Initialise CAN port. must be before Serial.begin
   Serial.begin(1000000);       // start serial port
   Msg.pt_data = &Buffer[0];    // reference message data to buffer
   

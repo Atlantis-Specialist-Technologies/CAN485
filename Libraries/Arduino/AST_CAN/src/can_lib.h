@@ -134,7 +134,7 @@ typedef  struct{
 //!         ==0: research of bit timing configuration failed
 //!         ==1: baudrate performed 
 //!
-extern U8 can_init(U8 mode);
+extern U8 can_init(U8 mode,long baud);
 
 //------------------------------------------------------------------------------
 //  @fn can_cmd

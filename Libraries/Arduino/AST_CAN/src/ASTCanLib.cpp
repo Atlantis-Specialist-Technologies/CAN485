@@ -9,7 +9,7 @@
  
 #include "ASTCanLib.h"
 
-void canInit(void){
+void canInit(long baud){
   // Clock prescaler
   CLKPR  = ( 1 << CLKPCE );          // Set Clock Prescaler change enable
   CLKPR  = 0x00;
@@ -23,7 +23,7 @@ void canInit(void){
   PORTB &= ~(1<<PORTB1);            // RST Led
   PORTB &= ~(1<<PORTB4);            // Go into normal mode (CAN_STBY low)
   _delay_ms(50);
-  can_init(0);
+  can_init(0,baud);
 }
 
 void clearBuffer(uint8_t *Buffer){

@@ -19,7 +19,7 @@ const uint8_t sendData[8] = {0,10,20,40,80,100,120,127};
 uint8_t txBuffer[8] = {};
 
 void setup() {
-  canInit();                         // Initialise CAN port. must be before Serial.begin
+  canInit(500000);                  // Initialise CAN port. must be before Serial.begin
   Serial.begin(1000000);             // start serial port
   txMsg.pt_data = &txBuffer[0];      // reference message data to transmit buffer
 }
