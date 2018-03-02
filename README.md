@@ -15,7 +15,7 @@ Repository for the CAN485 Board
 * **/Hardware** - Eagle design files
 
 # Documentation
-* **/Hookup Guide** - Hookup guide for the CAN485
+* **/Hookup Guide** - Hookup guide for the CAN485. This contains everything needed to get up and running.
 
 # Licensing
 This product is open source.
