@@ -1,17 +1,17 @@
 /* An Alternative Software Serial Library
  * http://www.pjrc.com/teensy/td_libs_AltSoftSerial.html
  * Copyright (c) 2014 PJRC.COM, LLC, Paul Stoffregen, paul@pjrc.com
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,9 +24,8 @@
 /*
  * Modified by Atlantis Specialist Technologies by James Blakey-Milner, 18 Aug 2017.
  * Added support for the AST CAN485 board
- * Note! AST modifications are in early development (alpha) and are likely to change without notice.
  */
- 
+
 // Teensy 2.0
 //
 #if defined(__AVR_ATmega32U4__) && defined(CORE_TEENSY)
@@ -128,8 +127,17 @@
 
 
 
-// Sanguino
-#elif defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644__)
+// EnviroDIY Mayfly, Sodaq Mbili
+#elif defined ARDUINO_AVR_ENVIRODIY_MAYFLY || defined ARDUINO_AVR_SODAQ_MBILI
+ #define ALTSS_USE_TIMER1
+ #define INPUT_CAPTURE_PIN		6 // receive
+ #define OUTPUT_COMPARE_A_PIN	5 // transmit
+ #define OUTPUT_COMPARE_B_PIN	4 // unusable PWM
+
+
+
+// Sanguino, Mighty 1284
+#elif defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega1284__)
  #define ALTSS_USE_TIMER1
  #define INPUT_CAPTURE_PIN		14 // receive
  #define OUTPUT_COMPARE_A_PIN		13 // transmit
@@ -147,4 +155,3 @@
 #else
 #error "Please define your board timer and pins"
 #endif
-
