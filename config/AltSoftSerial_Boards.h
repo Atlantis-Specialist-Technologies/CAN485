@@ -21,6 +21,10 @@
  * THE SOFTWARE.
  */
 
+/*
+ * Modified by Atlantis Specialist Technologies by James Blakey-Milner, 18 Aug 2017.
+ * Added support for the AST CAN485 board
+ */
 
 // Teensy 2.0
 //
@@ -139,7 +143,13 @@
  #define OUTPUT_COMPARE_A_PIN		13 // transmit
  #define OUTPUT_COMPARE_B_PIN		12 // unusable PWM
 
-
+// AST - CAN485
+#elif defined(__AVR_AT90CAN128__)
+ #define ALTSS_USE_TIMER3
+ #define INPUT_CAPTURE_PIN			9 // receive
+ #define OUTPUT_COMPARE_A_PIN		5 // transmit
+ #define OUTPUT_COMPARE_B_PIN		6 // unusable PWM
+ #define OUTPUT_COMPARE_C_PIN		7 // unusable PWM
 
 // Unknown board
 #else
