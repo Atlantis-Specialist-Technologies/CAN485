@@ -4,9 +4,12 @@ void setup() {
   // Refer to the link below for further details.
   // So far it works in all tests. 
   // https://github.com/Atlantis-Specialist-Technologies/CAN485/issues/2
+
+  // A timed sequence must be followed in order to disable JTAG.
+  // The JTD bit must be written twice within 4 cycles
   
-  MCUCR = (1<<JTD);
-  MCUCR = (1<<JTD);
+  MCUCR = (1<<JTD);         // Write JTD bit
+  MCUCR = (1<<JTD);         // Write again within 4 cycles
 
   // Set JTAG pins as outputs
   pinMode(A4, OUTPUT);
