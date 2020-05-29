@@ -31,3 +31,10 @@ Can485.build.f_cpu=16000000UL
 Can485.build.board=AVR_Can485
 Can485.build.core=arduino:arduino
 Can485.build.variant=Can485
+
+Can485.menu.cpu.clock16M=Can485 16 Mhz
+Can485.menu.cpu.clock16M.build.f_cpu=16000000UL
+Can485.menu.cpu.clock8M=Can485 8 Mhz
+Can485.menu.cpu.clock8M.build.f_cpu=8000000UL
+Can485.menu.cpu.clock4M=Can485 4 Mhz
+Can485.menu.cpu.clock4M.build.f_cpu=4000000UL
