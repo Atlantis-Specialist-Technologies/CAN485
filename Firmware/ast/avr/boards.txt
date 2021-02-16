@@ -30,4 +30,4 @@ Can485.build.mcu=at90can128
 Can485.build.f_cpu=16000000UL
 Can485.build.board=AVR_Can485
 Can485.build.core=arduino:arduino
-Can485.build.variant=Can485
+Can485.build.variant=can485
